@@ -1,10 +1,10 @@
 import { Outlet } from "react-router";
 import styles from "./AppLayout.module.css";
 
-export default function AppLayout({ children }) {
+export default function AppLayout() {
   return (
     <div className={styles.container}>
-      Layout <Outlet />
+      <Outlet />
     </div>
   );
 }

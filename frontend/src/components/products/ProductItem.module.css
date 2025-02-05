@@ -1,0 +1,46 @@
+.container {
+  background-color: white;
+  border-radius: 12px 32px 12px 12px;
+
+  &:nth-child(even) {
+    border-radius: 32px 12px 12px 12px;
+  }
+}
+
+.brand {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #323232;
+  padding: 16px 16px 0;
+}
+
+.imageWrapper {
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  height: 122px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.priceWrapper {
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+}
+
+.price {
+  color: #323232;
+}
+
+.addToCartButton {
+  background-color: #FF9F24;
+  padding: 8px;
+  border-radius: 12px 0;
+}
