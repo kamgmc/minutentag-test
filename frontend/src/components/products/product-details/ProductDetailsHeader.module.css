@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 24px 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #323232;
+}
+
+.button {
+  padding: 8px;
+  border-radius: 12px;
+  background-color: white;
+}

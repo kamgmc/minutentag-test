@@ -1,0 +1,32 @@
+.description {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #969696;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+
+.expanded {
+  -webkit-line-clamp: unset; /* Show full text when expanded */
+}
+
+.buttonWrapper {
+  text-align: right;
+}
+
+.button {
+  color: #ff9f24;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
