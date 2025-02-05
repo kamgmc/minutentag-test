@@ -3,9 +3,11 @@ import logger from "morgan";
 import indexRouter from "./routes/index.js";
 import productsRouter from "./routes/products.js";
 import normalizePort from "./utils/normalizePort.js";
+import cors from "cors";
 
 const server = express();
 
+server.use(cors())
 server.use(logger("dev"));
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
