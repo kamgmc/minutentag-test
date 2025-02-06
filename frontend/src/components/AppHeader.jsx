@@ -6,6 +6,10 @@ export default function AppHeader() {
     alert("Menu Toggled");
   };
 
+  const toggleUserMenu = () => {
+    alert("User menu toggled");
+  };
+
   return (
     <div className={styles.container}>
       <button className={styles.menuButton} onClick={toggleMenu}>
@@ -17,6 +21,7 @@ export default function AppHeader() {
         height={40}
         width={40}
         className={styles.avatar}
+        onClick={toggleUserMenu}
       />
     </div>
   );
