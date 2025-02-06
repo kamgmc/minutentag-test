@@ -1,9 +1,9 @@
 import styles from "./ProductListContent.module.css";
 import ProductList from "@/components/products/ProductList.jsx";
-import useProducts from "@/hooks/useProducts.js";
+import useProductList from "@/hooks/useProductList.js";
 
 export default function ProductListContent() {
-  const { products, isLoading } = useProducts();
+  const { products, isLoading } = useProductList();
 
   return (
     <div className={styles.container}>

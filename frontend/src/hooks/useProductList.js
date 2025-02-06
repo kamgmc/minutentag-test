@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { api } from "@/constants/api.js";
 
-export default function useProducts() {
+export default function useProductList() {
   const { data, isLoading } = useSWR(api.products);
 
   return {
