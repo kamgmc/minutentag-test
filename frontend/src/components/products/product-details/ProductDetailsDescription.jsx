@@ -1,24 +1,29 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import styles from "@/components/products/product-details/ProductDetailsDescription.module.css";
-import clsx from "clsx";
+
+const DESCRIPTION_MAX_LENGTH = 300;
 
 export default function ProductDetailsDescription({ description }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const reducedDescription = useMemo(
+    () => `${description.slice(0, DESCRIPTION_MAX_LENGTH)}...`,
+    [description],
+  );
 
-  const toggleExpanded = () => {
+  const toggleExpansion = () => {
     setIsExpanded((prevState) => !prevState);
   };
 
   return (
     <div>
-      <p className={clsx(styles.description, isExpanded && styles.expanded)}>
-        {description}
+      <p className={styles.description}>
+        {isExpanded ? description : reducedDescription}{" "}
+        {description.length > DESCRIPTION_MAX_LENGTH ? (
+          <button className={styles.button} onClick={toggleExpansion}>
+            {isExpanded ? "Read less" : "Read more"}
+          </button>
+        ) : null}
       </p>
-      <div className={styles.buttonWrapper}>
-        <button className={styles.button} onClick={toggleExpanded}>
-          {isExpanded ? "Read less" : "Read more"}
-        </button>
-      </div>
     </div>
   );
 }
