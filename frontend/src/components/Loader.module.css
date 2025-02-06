@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px
+  gap: 16px;
 }
 
 .loaderText {
@@ -16,7 +16,7 @@
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #FFF;
+  border: 5px solid white;
   border-bottom-color: #ff9f24;
   border-radius: 50%;
   display: inline-block;

@@ -23,11 +23,12 @@ This project is a React application built with Vite. It includes a product listi
 ### Installation
 
 Install dependencies:
-   ```sh
-   yarn install
-   # or
-   npm install
-   ```
+
+```sh
+yarn install
+# or
+npm install
+```
 
 ### Running the Project
 

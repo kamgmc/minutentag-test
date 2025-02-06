@@ -1,4 +1,4 @@
-import {useEffect, useMemo} from "react";
+import { useEffect, useMemo } from "react";
 import { useParams } from "react-router";
 import useSWR from "swr";
 import { api } from "@/constants/api.js";

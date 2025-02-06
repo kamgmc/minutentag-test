@@ -1,6 +1,6 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export const currentProductSizeState = atom({
-    key: 'currentProductSizeState',
-    default: null,
+  key: "currentProductSizeState",
+  default: null,
 });
