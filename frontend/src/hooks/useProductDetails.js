@@ -1,13 +1,13 @@
 import { useEffect, useMemo } from "react";
 import { useParams } from "react-router";
-import useSWR from "swr";
 import { api } from "@/constants/api.js";
 import { getInt } from "@/utils/index.js";
 import { currentProductSizeState } from "@/stores/products.js";
 import { useRecoilState } from "recoil";
+import useSWRImmutable from "swr/immutable";
 
 export default function useProductDetails() {
-  const { data, isLoading, error } = useSWR(api.products);
+  const { data, isLoading, error } = useSWRImmutable(api.products);
   const [productSize, setProductSize] = useRecoilState(currentProductSizeState);
   const params = useParams();
 
@@ -23,7 +23,7 @@ export default function useProductDetails() {
     }
   }, [product]);
 
-  if (error) {
+  if (!isLoading && error) {
     alert("Failed to load products");
   }
 

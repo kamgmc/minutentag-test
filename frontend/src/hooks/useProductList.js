@@ -1,10 +1,10 @@
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { api } from "@/constants/api.js";
 
 export default function useProductList() {
-  const { data, isLoading, error } = useSWR(api.products);
+  const { data, isLoading, error } = useSWRImmutable(api.products);
 
-  if (error) {
+  if (!isLoading && error) {
     alert("Failed to load products");
   }
 
