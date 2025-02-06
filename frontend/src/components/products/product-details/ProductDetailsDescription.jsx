@@ -15,15 +15,13 @@ export default function ProductDetailsDescription({ description }) {
   };
 
   return (
-    <div>
-      <p className={styles.description}>
-        {isExpanded ? description : reducedDescription}{" "}
-        {description.length > DESCRIPTION_MAX_LENGTH ? (
-          <button className={styles.button} onClick={toggleExpansion}>
-            {isExpanded ? "Read less" : "Read more"}
-          </button>
-        ) : null}
-      </p>
-    </div>
+    <p className={styles.description}>
+      {isExpanded ? description : reducedDescription}{" "}
+      {description.length > DESCRIPTION_MAX_LENGTH ? (
+        <button className={styles.button} onClick={toggleExpansion}>
+          {isExpanded ? "Read less" : "Read more"}
+        </button>
+      ) : null}
+    </p>
   );
 }
