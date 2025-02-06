@@ -22,7 +22,7 @@ export default function ProductDetailsContent() {
   );
 
   const addToCart = () => {
-    addProductToCart(product, product.skus[0]);
+    addProductToCart(product, productSize);
   };
 
   const openCart = () => {
