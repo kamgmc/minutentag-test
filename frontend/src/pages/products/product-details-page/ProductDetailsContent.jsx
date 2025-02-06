@@ -9,6 +9,7 @@ import { addProductToCart } from "@/services/cart.js";
 import { currentProductSizeState } from "@/stores/products.js";
 import { useRecoilState } from "recoil";
 import useProductStock from "@/hooks/useProductStock.js";
+import Loader from "@/components/Loader.jsx";
 
 export default function ProductDetailsContent() {
   const { product, isLoading } = useProductDetails();
@@ -29,7 +30,19 @@ export default function ProductDetailsContent() {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className={styles.loaderContainer}>
+        <p>Error loading product</p>
+      </div>
+    );
   }
 
   return (
