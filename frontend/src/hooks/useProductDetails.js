@@ -7,9 +7,10 @@ import { activeProductSkuState } from "@/stores/products.js";
 import { useRecoilState } from "recoil";
 
 export default function useProductDetails() {
-  const { data, isLoading } = useSWR(api.products);
+  const { data, isLoading, error } = useSWR(api.products);
   const [productSku, setProductSku] = useRecoilState(activeProductSkuState);
   const params = useParams();
+
   const id = useMemo(() => getInt((params["*"] || "").split("-")[0]), [params]);
   const product = useMemo(
     () => (id ? data?.find((product) => product.id === id) : null),
@@ -21,6 +22,10 @@ export default function useProductDetails() {
       setProductSku(product.skus[0]);
     }
   }, [product]);
+
+  if (error) {
+    alert("Failed to load products");
+  }
 
   return {
     product,
