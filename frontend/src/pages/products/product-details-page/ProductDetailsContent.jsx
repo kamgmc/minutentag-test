@@ -8,17 +8,17 @@ import BagIcon from "@/assets/icons/bag-icon.svg?react";
 import { addProductToCart } from "@/services/cart.js";
 import { currentProductSizeState } from "@/stores/products.js";
 import { useRecoilState } from "recoil";
-import useProductStock from "@/hooks/useProductStock.js";
+import useProductSize from "@/hooks/useProductSize.js";
 import Loader from "@/components/Loader.jsx";
 
 export default function ProductDetailsContent() {
   const { product, isLoading } = useProductDetails();
   const [productSize, setProductSize] = useRecoilState(currentProductSizeState);
-  const { productStock } = useProductStock(productSize?.code);
+  const { productSizeDetails } = useProductSize(productSize?.code);
 
   const price = useMemo(
-    () => getPriceFromCents(productStock?.price || 0),
-    [productStock?.price],
+    () => getPriceFromCents(productSizeDetails?.price || 0),
+    [productSizeDetails?.price],
   );
 
   const addToCart = () => {
@@ -56,7 +56,10 @@ export default function ProductDetailsContent() {
           <p className={styles.price}>{price}</p>
         </div>
         <p className={styles.origin}>
-          Origin: {product.origin} | Stock: {productStock?.stock}
+          Origin: {product.origin}{" "}
+          {productSizeDetails?.stock
+            ? `| Stock: ${productSizeDetails?.stock}`
+            : null}
         </p>
         <div className={styles.descriptionWrapper}>
           <p className={styles.descriptionTitle}>Description</p>

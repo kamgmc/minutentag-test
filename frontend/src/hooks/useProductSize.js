@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { api } from "@/constants/api.js";
 
-export default function useProductStock(sku) {
+export default function useProductSize(sku) {
   const { data, isLoading, error } = useSWR(sku ? `${api.stockPrice}/${sku}` : null, {
     refreshInterval: 5000,
   });
@@ -11,7 +11,7 @@ export default function useProductStock(sku) {
   }
 
   return {
-    productStock: data,
+    productSizeDetails: data,
     isLoading,
   };
 }
