@@ -1,4 +1,4 @@
-import styles from "./ProductListContent.module.css";
+import styles from "@/pages/products/product-list-page/ProductListContent.module.css";
 import ProductList from "@/components/products/ProductList.jsx";
 
 export default function ProductListContent() {
