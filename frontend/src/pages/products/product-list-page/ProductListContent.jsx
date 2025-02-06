@@ -1,7 +1,5 @@
 import styles from "./ProductListContent.module.css";
 import ProductList from "@/components/products/ProductList.jsx";
-import useProductList from "@/hooks/useProductList.js";
-import Loader from "@/components/Loader.jsx";
 
 export default function ProductListContent() {
   return (
