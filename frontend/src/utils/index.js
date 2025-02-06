@@ -7,3 +7,6 @@ export const getPriceFromCents = (cents) =>
     style: "currency",
     currency: "USD",
   }).format(cents / 100);
+
+export const formatBrandToUrl = (brand) =>
+  brand.trim().toLowerCase().replace(/\s+/g, "-");

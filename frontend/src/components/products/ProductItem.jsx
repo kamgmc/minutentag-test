@@ -3,21 +3,17 @@ import { Link } from "react-router";
 import { useRecoilState } from "recoil";
 import styles from "@/components/products/ProductItem.module.css";
 import PlusIcon from "@/assets/icons/plus-icon.svg?react";
-import { getPriceFromCents } from "@/utils/index.js";
+import { formatBrandToUrl, getPriceFromCents } from "@/utils/index.js";
 import { addProductToCart } from "@/services/cart.js";
-import { activeProductSkuState } from "@/stores/products.js";
+import { currentProductSizeState } from "@/stores/products.js";
 
 export default function ProductItem({ product }) {
-  const [, setProductSku] = useRecoilState(activeProductSkuState);
-  const href = useMemo(() => {
-    const formattedBrand = product.brand
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, "-");
+  const [, setProductSize] = useRecoilState(currentProductSizeState);
 
-    return `/product/${product.id}-${formattedBrand}`;
-  }, [product.id, product.brand]);
-
+  const href = useMemo(
+    () => `/product/${product.id}-${formatBrandToUrl(product.brand)}`,
+    [product.id, product.brand],
+  );
   const price = useMemo(
     () => getPriceFromCents(product.price),
     [product.price],
@@ -30,7 +26,7 @@ export default function ProductItem({ product }) {
   };
 
   const openDetails = () => {
-    setProductSku(product.skus[0]);
+    setProductSize(product.skus[0]);
   };
 
   return (

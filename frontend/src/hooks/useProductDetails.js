@@ -3,12 +3,12 @@ import { useParams } from "react-router";
 import useSWR from "swr";
 import { api } from "@/constants/api.js";
 import { getInt } from "@/utils/index.js";
-import { activeProductSkuState } from "@/stores/products.js";
+import { currentProductSizeState } from "@/stores/products.js";
 import { useRecoilState } from "recoil";
 
 export default function useProductDetails() {
   const { data, isLoading, error } = useSWR(api.products);
-  const [productSku, setProductSku] = useRecoilState(activeProductSkuState);
+  const [productSize, setProductSize] = useRecoilState(currentProductSizeState);
   const params = useParams();
 
   const id = useMemo(() => getInt((params["*"] || "").split("-")[0]), [params]);
@@ -18,8 +18,8 @@ export default function useProductDetails() {
   );
 
   useEffect(() => {
-    if (product && !productSku) {
-      setProductSku(product.skus[0]);
+    if (product && !productSize) {
+      setProductSize(product.skus[0]);
     }
   }, [product]);
 

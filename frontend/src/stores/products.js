@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const activeProductSkuState = atom({
-    key: 'activeProductSkuState',
+export const currentProductSizeState = atom({
+    key: 'currentProductSizeState',
     default: null,
 });

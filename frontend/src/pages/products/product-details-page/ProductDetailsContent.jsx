@@ -6,14 +6,14 @@ import useProductDetails from "@/hooks/useProductDetails.js";
 import ProductDetailsDescription from "@/components/products/product-details/ProductDetailsDescription.jsx";
 import BagIcon from "@/assets/icons/bag-icon.svg?react";
 import { addProductToCart } from "@/services/cart.js";
-import { activeProductSkuState } from "@/stores/products.js";
+import { currentProductSizeState } from "@/stores/products.js";
 import { useRecoilState } from "recoil";
 import useProductStock from "@/hooks/useProductStock.js";
 
 export default function ProductDetailsContent() {
   const { product, isLoading } = useProductDetails();
-  const [productSku, setProductSku] = useRecoilState(activeProductSkuState);
-  const { productStock } = useProductStock(productSku?.code);
+  const [productSize, setProductSize] = useRecoilState(currentProductSizeState);
+  const { productStock } = useProductStock(productSize?.code);
 
   const price = useMemo(
     () => getPriceFromCents(productStock?.price || 0),
@@ -52,16 +52,16 @@ export default function ProductDetailsContent() {
         <div className={styles.sizeWrapper}>
           <p className={styles.sizeTitle}>Size</p>
           <div className={styles.sizes}>
-            {product?.skus?.map((sku) => (
+            {product?.skus?.map((size) => (
               <button
-                key={sku.code}
+                key={size.code}
                 className={clsx(
                   styles.sizeButton,
-                  productSku?.code === sku.code && styles.sizeButtonActive,
+                  productSize?.code === size.code && styles.sizeButtonActive,
                 )}
-                onClick={() => setProductSku(sku)}
+                onClick={() => setProductSize(size)}
               >
-                {sku.name}
+                {size.name}
               </button>
             ))}
           </div>
