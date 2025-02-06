@@ -8,7 +8,6 @@ This project is a simple Express.js API for fetching products stock prices by SK
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Data Structure](#data-structure)
-- [License](#license)
 
 ## Installation
 
