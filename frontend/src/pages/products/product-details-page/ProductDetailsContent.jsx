@@ -61,27 +61,34 @@ export default function ProductDetailsContent() {
             ? `| Stock: ${productSizeDetails?.stock}`
             : null}
         </p>
-        <div className={styles.descriptionWrapper}>
-          <p className={styles.descriptionTitle}>Description</p>
-          <ProductDetailsDescription description={product.information} />
-        </div>
-        <div className={styles.sizeWrapper}>
-          <p className={styles.sizeTitle}>Size</p>
-          <div className={styles.sizes}>
-            {product?.skus?.map((size) => (
-              <button
-                key={size.code}
-                className={clsx(
-                  styles.sizeButton,
-                  productSize?.code === size.code && styles.sizeButtonActive,
-                )}
-                onClick={() => setProductSize(size)}
-              >
-                {size.name}
-              </button>
-            ))}
+
+        {product.information ? (
+          <div className={styles.descriptionWrapper}>
+            <p className={styles.descriptionTitle}>Description</p>
+            <ProductDetailsDescription description={product.information} />
           </div>
-        </div>
+        ) : null}
+
+        {product.skus?.length ? (
+          <div className={styles.sizeWrapper}>
+            <p className={styles.sizeTitle}>Size</p>
+            <div className={styles.sizes}>
+              {product?.skus?.map((size) => (
+                <button
+                  key={size.code}
+                  className={clsx(
+                    styles.sizeButton,
+                    productSize?.code === size.code && styles.sizeButtonActive,
+                  )}
+                  onClick={() => setProductSize(size)}
+                >
+                  {size.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
         <div className={styles.cartWrapper}>
           <div className={styles.cart}>
             <button className={styles.cartButton} onClick={openCart}>
